@@ -5,10 +5,10 @@ import targeted.GenericAnnotation;
 @SingleValueAnnotation
 public class SomeParentClass {
 
-	@GenericAnnotation
+	// @GenericAnnotation
 	protected final String field;
 
-	@GenericAnnotation(someInt = 3)
+	// @GenericAnnotation(someInt = 3)
 	public String someLibraryMethod(@GenericAnnotation String parameter) {
 		return "parent lib method called with " + parameter;
 	}

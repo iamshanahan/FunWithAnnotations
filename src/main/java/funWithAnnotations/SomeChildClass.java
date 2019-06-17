@@ -5,10 +5,10 @@ package funWithAnnotations;
 
 import targeted.GenericAnnotation;
 
-@GenericAnnotation(someInt = 4, someStrings = { "overriding string" })
+//@GenericAnnotation(someInt = 4, someStrings = { "overriding string" })
 public class SomeChildClass extends SomeParentClass {
 
-	@GenericAnnotation
+	// @GenericAnnotation
 	public SomeChildClass(@GenericAnnotation String fieldIn) {
 		super(fieldIn);
 	}
@@ -23,13 +23,13 @@ public class SomeChildClass extends SomeParentClass {
 	}
 
 	@Override
-	@GenericAnnotation(someInt = 3)
+	// @GenericAnnotation(someInt = 3)
 	public String someLibraryMethod(@GenericAnnotation String parameter) {
 		return "field : param " + getField() + " : " + parameter;
 	}
 
 	// @Override // causes compile error
-	@GenericAnnotation(someStrings = { "string 1", "string 2" })
+	// @GenericAnnotation(someStrings = { "string 1", "string 2" })
 	public static void main(String[] args) {
 		SomeChildClass objectOfThisClass = new SomeChildClass("const field");
 		System.out.println("Printing to stdout '" + objectOfThisClass.someLibraryMethod("passed value") + "'");
