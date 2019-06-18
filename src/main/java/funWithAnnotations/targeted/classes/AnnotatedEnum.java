@@ -1,7 +1,7 @@
-package targeted.classes;
+package funWithAnnotations.targeted.classes;
 
-import targeted.GenericAnnotation;
-import targeted.TypeAnnotation;
+import funWithAnnotations.targeted.GenericAnnotation;
+import funWithAnnotations.targeted.TypeAnnotation;
 
 /**
  * enum that demonstrates what annotations can be applied to enums.

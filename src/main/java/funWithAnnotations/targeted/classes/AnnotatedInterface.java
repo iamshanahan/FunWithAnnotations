@@ -1,9 +1,9 @@
-package targeted.classes;
+package funWithAnnotations.targeted.classes;
 
-import targeted.FieldAnnotation;
-import targeted.GenericAnnotation;
-import targeted.MethodAnnotation;
-import targeted.TypeAnnotation;
+import funWithAnnotations.targeted.FieldAnnotation;
+import funWithAnnotations.targeted.GenericAnnotation;
+import funWithAnnotations.targeted.MethodAnnotation;
+import funWithAnnotations.targeted.TypeAnnotation;
 
 /**
  * Interface whose purpose is to demonstrate where differently targeted

@@ -1,34 +1,28 @@
 package funWithAnnotations.targeted.classes;
 
-import static org.junit.Assert.assertTrue;
+import static funWithAnnotations.Helpers.assertAnnotationsExpected;
+import static org.junit.Assert.assertEquals;
 
-import java.lang.annotation.Annotation;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
+import java.lang.reflect.Constructor;
+import java.lang.reflect.Field;
+import java.lang.reflect.Method;
+import java.lang.reflect.Parameter;
 
 import org.junit.Test;
 
-import targeted.GenericAnnotation;
-import targeted.PackageAnnotation;
-import targeted.TypeAnnotation;
-import targeted.classes.AnnotatedClass;
+import funWithAnnotations.targeted.ConstructorAnnotation;
+import funWithAnnotations.targeted.FieldAnnotation;
+import funWithAnnotations.targeted.GenericAnnotation;
+import funWithAnnotations.targeted.MethodAnnotation;
+import funWithAnnotations.targeted.PackageAnnotation;
+import funWithAnnotations.targeted.ParameterAnnotation;
+import funWithAnnotations.targeted.TypeAnnotation;
+import funWithAnnotations.targeted.classes.AnnotatedClass;
 
 public class TestAnnotatedClass {
 
-	@SafeVarargs
-	private static void assertAnnotationsExpected(Annotation[] observedAnnots,
-			Class<? extends Annotation>... expectedAnnotClasses) {
-		List<Class<? extends Annotation>> expectedAnnotClassList = new ArrayList<>(Arrays.asList(expectedAnnotClasses));
-		for (Annotation observedAnnot : observedAnnots) {
-			assertTrue(expectedAnnotClassList.contains(observedAnnot.annotationType()));
-			expectedAnnotClassList.remove(observedAnnot.annotationType());
-		}
-		assertTrue(expectedAnnotClassList.isEmpty());
-	}
-
 	@Test
-	public void testClassAnnotation() {
+	public void testClassAnnotation() throws NoSuchMethodException, SecurityException {
 		AnnotatedClass acInstance = new AnnotatedClass("test-ctr-param");
 
 		Class<? extends AnnotatedClass> acInstanceClass = acInstance.getClass();
@@ -39,6 +33,33 @@ public class TestAnnotatedClass {
 		assertAnnotationsExpected(acInstanceClass.getPackage().getAnnotations(),
 				GenericAnnotation.class, PackageAnnotation.class);
 
+		Field fields[] = acInstanceClass.getFields();
+		assertEquals(1, fields.length);
+		assertAnnotationsExpected(fields[0].getAnnotations(),
+				FieldAnnotation.class,
+				GenericAnnotation.class);
+
+		Constructor<?> ctors[] = acInstanceClass.getConstructors();
+		assertEquals(1, ctors.length);
+		Constructor<?> ctor = ctors[0];
+		assertAnnotationsExpected(ctor.getAnnotations(),
+				ConstructorAnnotation.class,
+				GenericAnnotation.class);
+
+		Parameter params[] = ctor.getParameters();
+		assertEquals(1, params.length);
+		assertAnnotationsExpected(params[0].getAnnotations(),
+				GenericAnnotation.class,
+				ParameterAnnotation.class);
+
+		Method method = acInstanceClass.getMethod("getOutputString");
+		assertAnnotationsExpected(method.getAnnotations(),
+				MethodAnnotation.class,
+				GenericAnnotation.class);
+
+		method = acInstanceClass.getMethod("main",
+				new Class[] { String[].class });
+		assertAnnotationsExpected(method.getAnnotations() /* none */ );
 	}
 
 }

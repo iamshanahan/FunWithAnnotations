@@ -1,6 +1,6 @@
 package funWithAnnotations;
 
-import targeted.GenericAnnotation;
+import funWithAnnotations.targeted.GenericAnnotation;
 
 @SingleValueAnnotation
 public class SomeParentClass {

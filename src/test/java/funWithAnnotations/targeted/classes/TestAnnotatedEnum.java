@@ -1,15 +1,13 @@
 package funWithAnnotations.targeted.classes;
 
-import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertTrue;
-
-import java.lang.annotation.Annotation;
+import static funWithAnnotations.Helpers.assertAnnotationsExpected;
 
 import org.junit.Test;
 
-import targeted.PackageAnnotation;
-import targeted.TypeAnnotation;
-import targeted.classes.AnnotatedEnum;
+import funWithAnnotations.targeted.GenericAnnotation;
+import funWithAnnotations.targeted.PackageAnnotation;
+import funWithAnnotations.targeted.TypeAnnotation;
+import funWithAnnotations.targeted.classes.AnnotatedEnum;
 
 public class TestAnnotatedEnum {
 
@@ -17,13 +15,12 @@ public class TestAnnotatedEnum {
 	public void testClassAnnotation() {
 
 		Class<? extends AnnotatedEnum> cs = AnnotatedEnum.class;
-		Annotation[] classAnnots = cs.getAnnotations();
-		assertEquals("", 1, classAnnots.length);
-		assertTrue(classAnnots[0] instanceof TypeAnnotation);
-
-		Annotation[] packageAnnots = cs.getPackage().getAnnotations();
-		assertEquals("", 1, packageAnnots.length);
-		assertTrue(packageAnnots[0] instanceof PackageAnnotation);
+		assertAnnotationsExpected(cs.getAnnotations(),
+				TypeAnnotation.class,
+				GenericAnnotation.class);
+		assertAnnotationsExpected(cs.getPackage().getAnnotations(),
+				PackageAnnotation.class,
+				GenericAnnotation.class);
 	}
 
 }

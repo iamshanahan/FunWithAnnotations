@@ -1,12 +1,12 @@
-package targeted.classes;
+package funWithAnnotations.targeted.classes;
 
-import targeted.ConstructorAnnotation;
-import targeted.FieldAnnotation;
-import targeted.GenericAnnotation;
-import targeted.LocalVarAnnotation;
-import targeted.MethodAnnotation;
-import targeted.ParameterAnnotation;
-import targeted.TypeAnnotation;
+import funWithAnnotations.targeted.ConstructorAnnotation;
+import funWithAnnotations.targeted.FieldAnnotation;
+import funWithAnnotations.targeted.GenericAnnotation;
+import funWithAnnotations.targeted.LocalVarAnnotation;
+import funWithAnnotations.targeted.MethodAnnotation;
+import funWithAnnotations.targeted.ParameterAnnotation;
+import funWithAnnotations.targeted.TypeAnnotation;
 
 /**
  * Demonstrates which types of targeted annotations get accepted by the compiler
@@ -91,6 +91,7 @@ public class AnnotatedClass implements AnnotatedInterface {
 	// @PackageAnnotation // does not compile
 	// @ParameterAnnotation // does not compile
 	// @TypeAnnotation // does not compile
+	@Override
 	public String getOutputString() {
 
 		// Local variable. Dubious usefulness.

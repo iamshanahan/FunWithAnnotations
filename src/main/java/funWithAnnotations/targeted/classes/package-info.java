@@ -10,7 +10,7 @@
 @PackageAnnotation // *does* compile
 //@ParameterAnnotation // does not compile
 //@TypeAnnotation // does not compile
-package targeted.classes;
+package funWithAnnotations.targeted.classes;
 
-import targeted.GenericAnnotation;
-import targeted.PackageAnnotation;
+import funWithAnnotations.targeted.GenericAnnotation;
+import funWithAnnotations.targeted.PackageAnnotation;

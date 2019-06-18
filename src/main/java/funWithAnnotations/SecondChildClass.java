@@ -3,7 +3,7 @@
  */
 package funWithAnnotations;
 
-import targeted.GenericAnnotation;
+import funWithAnnotations.targeted.GenericAnnotation;
 
 //@GenericAnnotation(someInt = 4, someStrings = { "overriding string" })
 @SingleValueAnnotation("overriding parents default")

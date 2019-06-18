@@ -1,8 +1,8 @@
-package targeted.classes;
+package funWithAnnotations.targeted.classes;
 
-import targeted.AnnotationAnnotation;
-import targeted.GenericAnnotation;
-import targeted.TypeAnnotation;
+import funWithAnnotations.targeted.AnnotationAnnotation;
+import funWithAnnotations.targeted.GenericAnnotation;
+import funWithAnnotations.targeted.TypeAnnotation;
 
 /**
  * Annotation that demonstrates what annotations can be applied to annotations
