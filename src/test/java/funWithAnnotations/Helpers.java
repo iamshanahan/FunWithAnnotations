@@ -12,12 +12,26 @@ public class Helpers {
 	@SafeVarargs
 	public static void assertAnnotationsExpected(Annotation[] observedAnnots,
 			Class<? extends Annotation>... expectedAnnotClasses) {
-		List<Class<? extends Annotation>> expectedAnnotClassList = new ArrayList<>(Arrays.asList(expectedAnnotClasses));
-		for (Annotation observedAnnot : observedAnnots) {
-			assertTrue(expectedAnnotClassList.contains(observedAnnot.annotationType()));
-			expectedAnnotClassList.remove(observedAnnot.annotationType());
+		List<Class<? extends Annotation>> expectedAnnotClassList = new ArrayList<>(
+				Arrays.asList(expectedAnnotClasses));
+		try {
+			for (Annotation observedAnnot : observedAnnots) {
+				assertTrue(expectedAnnotClassList.contains(observedAnnot.annotationType()));
+				expectedAnnotClassList.remove(observedAnnot.annotationType());
+			}
+			assertTrue(expectedAnnotClassList.isEmpty());
+		} catch (AssertionError e) {
+			StringBuilder builder = new StringBuilder("Annotations do not match:\nExpected:< ");
+			for (Class<? extends Annotation> clazz : expectedAnnotClasses) {
+				builder.append(clazz.toString()).append(' ');
+			}
+			builder.append(">\nObserved:< ");
+			for (Annotation annot : observedAnnots) {
+				builder.append(annot.annotationType().toString()).append(' ');
+			}
+			builder.append('>');
+			throw new AssertionError(builder.toString());
 		}
-		assertTrue(expectedAnnotClassList.isEmpty());
 	}
 
 //	// Do not use.  Need to declare as extends Object, syntax is escaping me.

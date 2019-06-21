@@ -17,12 +17,11 @@ import funWithAnnotations.targeted.MethodAnnotation;
 import funWithAnnotations.targeted.PackageAnnotation;
 import funWithAnnotations.targeted.ParameterAnnotation;
 import funWithAnnotations.targeted.TypeAnnotation;
-import funWithAnnotations.targeted.classes.AnnotatedClass;
 
 public class TestAnnotatedClass {
 
 	@Test
-	public void testClassAnnotation() throws NoSuchMethodException, SecurityException {
+	public void testEachComponentHasExpectedAnnotations() throws NoSuchMethodException, SecurityException {
 		AnnotatedClass acInstance = new AnnotatedClass("test-ctr-param");
 
 		Class<? extends AnnotatedClass> acInstanceClass = acInstance.getClass();
