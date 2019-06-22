@@ -11,7 +11,7 @@ import funWithAnnotations.targeted.TypeAnnotation;
 /**
  * Demonstrates which types of targeted annotations get accepted by the compiler
  * in different places. Namely: Class, Field, CTOR, param, line of code, method,
- * local var. Uncommenting any annotation results in compile error.
+ * local var. Uncommenting any commented annotation results in compile error.
  * 
  * @author bshanahan
  *

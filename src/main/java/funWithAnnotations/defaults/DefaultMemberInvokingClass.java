@@ -17,8 +17,8 @@ public class DefaultMemberInvokingClass {
 	public static int annotationsWithMultiMembersMayBeTreatedAsSingleMembered;
 
 	// @MultipleMemberLackingDefault( "foo" ) // does not compile
-	// @MultipleMemberLackingDefault( "foo", somethingLackingDefault=3 ) // does not
-	// compile
+	// @MultipleMemberLackingDefault( "foo", somethingLackingDefault=3 )
+	// ^ does not compile--can't omit member name 'value'
 	@MultipleMemberLackingDefault(value = "foo", somethingLackingDefault = 3)
 	public static int butOnlyIfAllOtherMembersHaveDefaultValues;
 }

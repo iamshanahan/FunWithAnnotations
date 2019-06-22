@@ -1,6 +1,7 @@
 package funWithAnnotations.memberTypes;
 
 public @interface AnnotationExhaustingMemberTypes {
+	// singles
 	boolean booleanMember();
 
 	char charMember();
@@ -14,6 +15,9 @@ public @interface AnnotationExhaustingMemberTypes {
 
 	InnerAnnotation annotationMember();
 
+	Class<?> classmember();
+
+	// arrays
 	boolean[] booleanArrayMember();
 
 	char[] charArrayMember();
@@ -25,5 +29,7 @@ public @interface AnnotationExhaustingMemberTypes {
 	InnerEnum[] enumArrayMember();
 
 	InnerAnnotation[] annotationArrayMember();
+
+	Class<?>[] classArrayMember();
 
 }
